@@ -4,12 +4,14 @@ import "./App.css";
 import MovieList from "./Components/MovieList";
 import MovieListHeading from "./Components/MovieListHeading";
 import SearchBox from "./Components/SearchBox";
+const dotenv = require('dotenv');
+const { API_KEY } = process.env;
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const getMovieRequest = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?i=${searchValue}&apikey=428f6c2c`;
+    const url = `http://www.omdbapi.com/?i=${searchValue}&apikey=${API_KEY}`;
     const response = await fetch(url);
 
     const responseJson = await response.json();
