@@ -1,3 +1,7 @@
+# MOVIE Finder 
+
+## Descriptions
+### This application helps you search for movies and also has a functionality to add it to your watch list .. https://www.freecodecamp.org/news/react-movie-app-tutorial/
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
