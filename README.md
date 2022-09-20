@@ -1,8 +1,9 @@
-# MOVIE Finder 
+# Movie Finder 
 
 ## Descriptions
 
-### This application helps you search for movies and also has a functionality to add it to your watch list .. 
+### This application helps you search for movies and also has a functionality to add it to your watch list.. 
+
 
 # Getting Started with Create React App
 
