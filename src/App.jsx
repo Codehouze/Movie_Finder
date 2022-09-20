@@ -5,55 +5,54 @@ import MovieList from "./Components/MovieList";
 import MovieListHeading from "./Components/MovieListHeading";
 import SearchBox from "./Components/SearchBox";
 import AddFavourites from "./Components/AddFavourites";
-// const { REACT_APP_API_KEY} = process.env;
-// console.log(REACT_APP_API_KEY);
+const { REACT_APP_API_KEY } = process.env;
 
 const App = () => {
-	const [movies, setMovies] = useState([]);
-	const [searchValue, setSearchValue] = useState('');
-	const [favourites, setFavourites] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [favourites, setFavourites] = useState([]);
 
-	const getMovieRequest = async (searchValue) => {
-		const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`;
+  const getMovieRequest = async (searchValue) => {
+    const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=${REACT_APP_API_KEY}`;
 
-		const response = await fetch(url);
-		const responseJson = await response.json();
+    const response = await fetch(url);
+    const responseJson = await response.json();
 
-		if (responseJson.Search) {
-			setMovies(responseJson.Search);
-		}
-	};
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
+    }
+  };
 
-	const addFavouriteMovie = (movie) => {
-		const newFavouriteList = [...favourites, movie];
-		setFavourites(newFavouriteList);
-	};
+  const addFavouriteMovie = (movie) => {
+    const newFavouriteList = [...favourites, movie];
+    setFavourites(newFavouriteList);
+  };
 
-	useEffect(() => {
-		getMovieRequest(searchValue);
-	}, [searchValue]);
+  useEffect(() => {
+    getMovieRequest(searchValue);
+  }, [searchValue]);
 
-	return (
-		<div className='container-fluid movie-app'>
-			<div className='row d-flex align-items-center mt-4 mb-4'>
-				<MovieListHeading heading='Movies' />
-				<SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-			</div>
-			<div className='row'>
-				<MovieList
-					movies={movies}
-					favouriteComponent={AddFavourites}
-					handleFavouritesClick={addFavouriteMovie}
-				/>
-			</div>
-			<div className='row d-flex align-items-center mt-4 mb-4'>
-				<MovieListHeading heading='Favourites' />
-			</div>
-			<div className='row'>
-				<MovieList movies={favourites} favouriteComponent={AddFavourites} />
-			</div>
-		</div>
-	);
+  return (
+    <div className="container-fluid movie-app">
+      <div className="row d-flex align-items-center mt-4 mb-4">
+        <MovieListHeading heading="Movies" />
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+      </div>
+      <div className="row">
+        <MovieList
+          movies={movies}
+          favouriteComponent={AddFavourites}
+          handleFavouritesClick={addFavouriteMovie}
+        />
+      </div>
+      <div className="row d-flex align-items-center mt-4 mb-4">
+        <MovieListHeading heading="Favourites" />
+      </div>
+      <div className="row">
+        <MovieList movies={favourites} favouriteComponent={AddFavourites} />
+      </div>
+    </div>
+  );
 };
 // const App = () => {
 //   const [movies, setMovies] = useState([]);
